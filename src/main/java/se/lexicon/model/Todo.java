@@ -5,8 +5,7 @@ package se.lexicon.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-
-public class TodoItems {
+public class Todo {
     private int todo_id;
     private String title;
     private String description;
@@ -14,10 +13,11 @@ public class TodoItems {
     private int done;
     private int assignee_id;
 
-    public TodoItems() {
+
+    public Todo() {
     }
 
-    public TodoItems(int todo_id, String title, String description, LocalDate deadline, int done, int assignee_id) {
+    public Todo(int todo_id, String title, String description, LocalDate deadline, int done, int assignee_id) {
         this.todo_id = todo_id;
         this.title = title;
         this.description = description;
@@ -78,8 +78,8 @@ public class TodoItems {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TodoItems todoItems = (TodoItems) o;
-        return todo_id == todoItems.todo_id && done == todoItems.done && assignee_id == todoItems.assignee_id && Objects.equals(title, todoItems.title) && Objects.equals(description, todoItems.description) && Objects.equals(deadline, todoItems.deadline);
+        Todo todo = (Todo) o;
+        return todo_id == todo.todo_id && done == todo.done && assignee_id == todo.assignee_id && Objects.equals(title, todo.title) && Objects.equals(description, todo.description) && Objects.equals(deadline, todo.deadline);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class TodoItems {
 
     @Override
     public String toString() {
-        return "TodoItems{" +
+        return "Todo{" +
                 "todo_id=" + todo_id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
