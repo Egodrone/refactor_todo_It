@@ -68,6 +68,10 @@ public class App
         LocalDate date = LocalDate.parse("2021-04-02");
         //3 (assignee_id) references to the Person
         Todo createTodo = todoImpl.create(new Todo("Gogo", "GG", date, 0, 3));
+
+        //Find allTodo
+        Collection<Todo> cTodo = todoImpl.findAll();
+        cTodo.forEach(System.out::println);
     }
 
 
