@@ -85,7 +85,7 @@ public class App
         Collection<Todo> cPersonFindByAssignee = todoImpl.findByAssignee(updatedPerson);
         cPersonFindByAssignee.forEach(System.out::println);
 
-        System.out.println("------------------------------------");
+        System.out.println("----------- deleteById ------------");
         //deleteById
         boolean todoTaskDelStatus = todoImpl.deleteById(createTodo.getTodo_id());
         //Test for the invalid boolean if you want
@@ -93,8 +93,14 @@ public class App
         //boolean todoTaskDelStatus = todoImpl.deleteById(10);
         System.out.println(todoTaskDelStatus);
 
+        System.out.println("--------------- Update -----------------");
         //update
         Todo tUpdate = todoImpl.update(createTodo);
+
+        System.out.println("------------------------------------");
+        //findByUnassignedTodoItems
+        Collection<Todo> findByUnassigned = todoImpl.findByUnassignedTodoItems();
+        findByUnassigned.forEach(System.out::println);
 
 
     }

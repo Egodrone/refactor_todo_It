@@ -5,6 +5,8 @@ package se.lexicon.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
+
 public class Todo {
     private int todo_id;
     private String title;
@@ -106,5 +108,7 @@ public class Todo {
                 ", assignee_id=" + assignee_id +
                 '}';
     }
+
+
 
 }

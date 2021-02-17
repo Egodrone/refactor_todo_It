@@ -199,8 +199,29 @@ public class TodoItemsImpl implements TodoItemsInterface {
 
     @Override
     public Collection<Todo> findByUnassignedTodoItems() {
+        Collection<Todo> cTodo = new ArrayList<>();
 
-        return null;
+        String query = "SELECT * FROM todo_item WHERE assignee_id IS NULL";
+        try(
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                cTodo.add(new Todo(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4).toLocalDate(),
+                        resultSet.getInt(5),
+                        resultSet.getInt(6)
+                ));
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cTodo;
     }
 
 
