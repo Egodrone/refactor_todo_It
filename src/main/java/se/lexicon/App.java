@@ -38,7 +38,7 @@ public class App
         PeopleImpl peopleImpl = new PeopleImpl();
 
         // Create person
-        Person createdPerson = peopleImpl.create(new Person("Sonny", "Gollibani"));
+        //Person createdPerson = peopleImpl.create(new Person("Sonny", "Gollibani"));
 
         //Find all people
         Collection<Person> peopleCollection = peopleImpl.findAll();
@@ -76,6 +76,11 @@ public class App
         //findById
         Todo todoFindById = todoImpl.findById(3);
         System.out.println(todoFindById.toString());
+
+        //Find by done status
+        Collection<Todo> cTodoDoneStatus = todoImpl.findByDoneStatus(true);
+        System.out.println("------------------------------------");
+        cTodoDoneStatus.forEach(System.out::println);
     }
 
 

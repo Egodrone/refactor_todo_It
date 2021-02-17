@@ -102,7 +102,35 @@ public class TodoItemsImpl implements TodoItemsInterface {
 
     @Override
     public Collection<Todo> findByDoneStatus(boolean status) {
-        return null;
+        Collection<Todo> cTodo = new ArrayList<>();
+
+        int taskDone = 0;
+        if(status == true) {
+            taskDone = 1;
+        }
+        String query = "SELECT * FROM todo_item WHERE done = ?";
+
+        try(
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.setInt(1, taskDone);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                cTodo.add(new Todo(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4).toLocalDate(),
+                        resultSet.getInt(5),
+                        resultSet.getInt(6)
+                ));
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cTodo;
     }
 
 
