@@ -4,14 +4,13 @@ package se.lexicon.dao;
 
 import se.lexicon.dao.db.DbConnection;
 import se.lexicon.model.Person;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+
 
 
 public class PeopleImpl implements PeopleInterface {
