@@ -2,7 +2,10 @@ package se.lexicon;
 
 
 
+import se.lexicon.dao.PeopleImpl;
 import se.lexicon.dao.db.DbConnection;
+import se.lexicon.model.Person;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +28,13 @@ public class App
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        // Person implementation
+        PeopleImpl peopleImpl = new PeopleImpl();
+
+        // Create person
+        Person createdPerson = peopleImpl.create(new Person("Hanna", "Nilsson"));
+
 
     }
 

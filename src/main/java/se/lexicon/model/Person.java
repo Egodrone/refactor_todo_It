@@ -13,6 +13,11 @@ public class Person {
     public Person() {
     }
 
+    public Person(String first_name, String last_name) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+    }
+
     public Person(int person_id, String first_name, String last_name) {
         this.person_id = person_id;
         this.first_name = first_name;
