@@ -13,6 +13,7 @@ public interface TodoItemsInterface {
     Collection<Todo> findAll();
     Todo findById(int id);
     Collection<Todo> findByDoneStatus(boolean status);
+    Collection<Todo> findByAssignee(int id);
     Collection<Todo> findByAssignee(Person person);
     Collection<Todo> findByUnassignedTodoItems();
     Todo update(Todo todo);
