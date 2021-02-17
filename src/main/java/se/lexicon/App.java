@@ -93,6 +93,9 @@ public class App
         //boolean todoTaskDelStatus = todoImpl.deleteById(10);
         System.out.println(todoTaskDelStatus);
 
+        //update
+        Todo tUpdate = todoImpl.update(createTodo);
+
 
     }
 

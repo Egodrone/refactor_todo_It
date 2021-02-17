@@ -207,7 +207,26 @@ public class TodoItemsImpl implements TodoItemsInterface {
 
     @Override
     public Todo update(Todo todo) {
-        return null;
+        Todo updTodo = new Todo();
+
+        String query = "UPDATE todo_item SET title = '"
+                + todo.getTitle() +
+                "', description = '" + todo.getDescription()
+                + "', deadline = '" + todo.getDeadline()
+                + "', done = " + todo.getDone()
+                + ", assignee_id = " + todo.getAssignee_id()
+                + " WHERE todo_id = " + todo.getTodo_id();
+
+        try(
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.executeUpdate(query);
+            updTodo = todo;
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return updTodo;
     }
 
 
