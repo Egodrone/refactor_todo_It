@@ -35,7 +35,7 @@ public class App
         PeopleImpl peopleImpl = new PeopleImpl();
 
         // Create person
-        //Person createdPerson = peopleImpl.create(new Person("Hanna", "Nilsson"));
+        Person createdPerson = peopleImpl.create(new Person("Sonny", "Gollibani"));
 
         //Find all people
         Collection<Person> peopleCollection = peopleImpl.findAll();
@@ -53,6 +53,10 @@ public class App
         //Update Person
         Person updatedPerson = peopleImpl.update(new Person(3, "Jocko", "Willink"));
         System.out.println(updatedPerson.toString());
+
+        //Delete Person
+        boolean status = peopleImpl.deleteById(1);
+        System.out.println(status);
     }
 
 

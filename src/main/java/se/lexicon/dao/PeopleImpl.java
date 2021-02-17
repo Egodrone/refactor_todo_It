@@ -142,7 +142,21 @@ public class PeopleImpl implements PeopleInterface {
 
     @Override
     public boolean deleteById(int id) {
-        return false;
+        String query = "DELETE FROM person WHERE person_id = ?";
+
+        boolean result = false;
+
+        try (
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
 
