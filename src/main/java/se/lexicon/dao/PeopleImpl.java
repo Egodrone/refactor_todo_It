@@ -120,7 +120,22 @@ public class PeopleImpl implements PeopleInterface {
 
     @Override
     public Person update(Person person) {
-        return null;
+        Person updPerson = new Person();
+
+        String query = "UPDATE person SET first_name = '"
+                + person.getFirst_name() + "', last_name = '"
+                + person.getLast_name() + "' WHERE person_id = " + person.getPerson_id();
+
+        try(
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.executeUpdate(query);
+            updPerson = person;
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return updPerson;
     }
 
 

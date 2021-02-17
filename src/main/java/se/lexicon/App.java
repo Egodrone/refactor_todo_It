@@ -50,6 +50,9 @@ public class App
         peopleCollection = peopleImpl.findByName(findName);
         peopleCollection.forEach(System.out::println);
 
+        //Update Person
+        Person updatedPerson = peopleImpl.update(new Person(3, "Jocko", "Willink"));
+        System.out.println(updatedPerson.toString());
     }
 
 
