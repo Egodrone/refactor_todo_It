@@ -1,11 +1,13 @@
 package se.lexicon;
 
 
-import se.lexicon.dao.db.DbConnection;
 
+import se.lexicon.dao.db.DbConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+
 
 public class App
 {
