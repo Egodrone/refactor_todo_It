@@ -22,18 +22,6 @@ public class App
     {
         System.out.println( "--- Todo application ---" );
 
-        // test connection to the database
-        /*
-        String query = "SELECT * FROM person";
-        try (
-                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
-        ) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
-
         // Person implementation
         PeopleImpl peopleImpl = new PeopleImpl();
 
@@ -67,7 +55,7 @@ public class App
         //title, `description`, deadline, done, assignee_id
         LocalDate date = LocalDate.parse("2021-04-02");
         //3 (assignee_id) references to the Person
-        Todo createTodo = todoImpl.create(new Todo("Gogo", "GG", date, 0, 3));
+        Todo createTodo = todoImpl.create(new Todo("Gogo", "abcdfg", date, 0, 3));
 
         //Find allTodo
         Collection<Todo> cTodo = todoImpl.findAll();
@@ -81,6 +69,11 @@ public class App
         Collection<Todo> cTodoDoneStatus = todoImpl.findByDoneStatus(true);
         System.out.println("------------------------------------");
         cTodoDoneStatus.forEach(System.out::println);
+
+        System.out.println("------------------------------------");
+        //findByAssignee
+        Collection<Todo> cTodoFindByAssignee = todoImpl.findByAssignee(3);
+        cTodoFindByAssignee.forEach(System.out::println);
     }
 
 
