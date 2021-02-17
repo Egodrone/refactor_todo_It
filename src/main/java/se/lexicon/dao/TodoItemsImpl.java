@@ -105,7 +105,7 @@ public class TodoItemsImpl implements TodoItemsInterface {
         Collection<Todo> cTodo = new ArrayList<>();
 
         int taskDone = 0;
-        if(status == true) {
+        if(status) {
             taskDone = 1;
         }
         String query = "SELECT * FROM todo_item WHERE done = ?";
@@ -199,6 +199,7 @@ public class TodoItemsImpl implements TodoItemsInterface {
 
     @Override
     public Collection<Todo> findByUnassignedTodoItems() {
+
         return null;
     }
 
@@ -213,7 +214,24 @@ public class TodoItemsImpl implements TodoItemsInterface {
 
     @Override
     public boolean deleteById(int id) {
-        return false;
+        String query = "DELETE FROM todo_item WHERE todo_id = ?";
+
+        boolean result = false;
+
+        try (
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.setInt(1, id);
+
+            int status = preparedStatement.executeUpdate();
+            if(status == 1) {
+                result = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
 

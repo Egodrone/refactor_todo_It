@@ -81,9 +81,17 @@ public class App
 
         System.out.println("------------------------------------");
         //findByAssignee Person
-        //
+        // Check later
         Collection<Todo> cPersonFindByAssignee = todoImpl.findByAssignee(updatedPerson);
         cPersonFindByAssignee.forEach(System.out::println);
+
+        System.out.println("------------------------------------");
+        //deleteById
+        boolean todoTaskDelStatus = todoImpl.deleteById(createTodo.getTodo_id());
+        //Test for the invalid boolean if you want
+        //boolean todoTaskDelStatus = todoImpl.deleteById(10000);
+        //boolean todoTaskDelStatus = todoImpl.deleteById(10);
+        System.out.println(todoTaskDelStatus);
 
 
     }
