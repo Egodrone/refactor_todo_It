@@ -17,6 +17,14 @@ public class Todo {
     public Todo() {
     }
 
+    public Todo(String title, String description, LocalDate deadline, int done, int assignee_id) {
+        this.title = title;
+        this.description = description;
+        this.deadline = deadline;
+        this.done = done;
+        this.assignee_id = assignee_id;
+    }
+
     public Todo(int todo_id, String title, String description, LocalDate deadline, int done, int assignee_id) {
         this.todo_id = todo_id;
         this.title = title;
