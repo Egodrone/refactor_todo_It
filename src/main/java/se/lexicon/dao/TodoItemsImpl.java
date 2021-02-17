@@ -73,7 +73,29 @@ public class TodoItemsImpl implements TodoItemsInterface {
 
     @Override
     public Todo findById(int id) {
-        return null;
+        String query = "SELECT * FROM todo_item WHERE todo_id = ?";
+
+        Todo t = new Todo();
+
+        try (
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                t.setTodo_id(resultSet.getInt(1));
+                t.setTitle(resultSet.getString(2));
+                t.setDescription(resultSet.getString(3));
+                t.setDeadline(resultSet.getDate(4).toLocalDate());
+                t.setDone(resultSet.getInt(5));
+                t.setAssignee_id(resultSet.getInt(6));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return t;
     }
 
 

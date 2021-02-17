@@ -7,13 +7,13 @@ import se.lexicon.dao.TodoItemsImpl;
 import se.lexicon.dao.db.DbConnection;
 import se.lexicon.model.Person;
 import se.lexicon.model.Todo;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 
 public class App
@@ -72,6 +72,10 @@ public class App
         //Find allTodo
         Collection<Todo> cTodo = todoImpl.findAll();
         cTodo.forEach(System.out::println);
+
+        //findById
+        Todo todoFindById = todoImpl.findById(3);
+        System.out.println(todoFindById.toString());
     }
 
 
