@@ -3,12 +3,15 @@ package se.lexicon;
 
 
 import se.lexicon.dao.PeopleImpl;
+import se.lexicon.dao.TodoItemsImpl;
 import se.lexicon.dao.db.DbConnection;
 import se.lexicon.model.Person;
+import se.lexicon.model.Todo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -58,8 +61,13 @@ public class App
         boolean status = peopleImpl.deleteById(1);
         System.out.println(status);
 
+        //To do implementation
+        TodoItemsImpl todoImpl = new TodoItemsImpl();
         //Create To do
-
+        //title, `description`, deadline, done, assignee_id
+        LocalDate date = LocalDate.parse("2021-04-02");
+        //3 (assignee_id) references to the Person
+        Todo createTodo = todoImpl.create(new Todo("Gogo", "GG", date, 0, 3));
     }
 
 
