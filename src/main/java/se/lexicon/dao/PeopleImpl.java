@@ -150,8 +150,11 @@ public class PeopleImpl implements PeopleInterface {
                 PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
         ) {
             preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
-            result = true;
+
+            int status = preparedStatement.executeUpdate();
+            if(status == 1) {
+                result = true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
