@@ -38,11 +38,12 @@ public class App
         //Person createdPerson = peopleImpl.create(new Person("Sven", "Nilsson"));
 
         //Find all people
-        Collection<Person> peopleCollection = new ArrayList<>();
-        peopleCollection = peopleImpl.findAll();
+        Collection<Person> peopleCollection = peopleImpl.findAll();
         peopleCollection.forEach(System.out::println);
 
-
+        //Find Person by id
+        Person foundById = peopleImpl.findById(2);
+        System.out.println(foundById.toString());
 
     }
 

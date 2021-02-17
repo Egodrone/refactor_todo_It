@@ -67,7 +67,26 @@ public class PeopleImpl implements PeopleInterface {
 
     @Override
     public Person findById(int id) {
-        return null;
+        String query = "SELECT * FROM person WHERE person_id = ?";
+
+        Person p = new Person();
+
+        try (
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                p.setPerson_id(resultSet.getInt(1));
+                p.setFirst_name(resultSet.getString(2));
+                p.setLast_name(resultSet.getString(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return p;
     }
 
 
