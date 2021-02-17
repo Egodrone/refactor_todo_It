@@ -57,7 +57,7 @@ public class App
         //title, `description`, deadline, done, assignee_id
         LocalDate date = LocalDate.parse("2021-04-02");
         //3 (assignee_id) references to the Person
-        Todo createTodo = todoImpl.create(new Todo("Gogo", "abcdfg", date, 0, 3));
+        Todo createTodo = todoImpl.create(new Todo("Bitcoin", "DoNotBuyNow", date, 0, 3));
 
         System.out.println("------------------------------------");
         //Find allTodo
@@ -79,9 +79,11 @@ public class App
         Collection<Todo> cTodoFindByAssignee = todoImpl.findByAssignee(3);
         cTodoFindByAssignee.forEach(System.out::println);
 
+        System.out.println("------------------------------------");
         //findByAssignee Person
-
-
+        //
+        Collection<Todo> cPersonFindByAssignee = todoImpl.findByAssignee(updatedPerson);
+        cPersonFindByAssignee.forEach(System.out::println);
 
 
     }
