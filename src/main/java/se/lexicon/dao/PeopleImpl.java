@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
-
+import java.util.List;
 
 
 public class PeopleImpl implements PeopleInterface {
@@ -93,7 +93,27 @@ public class PeopleImpl implements PeopleInterface {
 
     @Override
     public Collection<Person> findByName(String name) {
-        return null;
+        Collection<Person> pCollection = new ArrayList<>();
+        String query = "SELECT * FROM person WHERE first_name = ?";
+
+        try (
+                PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(query)
+        ) {
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                pCollection.add(new Person(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3)
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pCollection;
     }
 
 

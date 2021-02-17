@@ -35,7 +35,7 @@ public class App
         PeopleImpl peopleImpl = new PeopleImpl();
 
         // Create person
-        //Person createdPerson = peopleImpl.create(new Person("Sven", "Nilsson"));
+        //Person createdPerson = peopleImpl.create(new Person("Hanna", "Nilsson"));
 
         //Find all people
         Collection<Person> peopleCollection = peopleImpl.findAll();
@@ -44,6 +44,11 @@ public class App
         //Find Person by id
         Person foundById = peopleImpl.findById(2);
         System.out.println(foundById.toString());
+
+        //Find Person by name
+        String findName = "Hanna";
+        peopleCollection = peopleImpl.findByName(findName);
+        peopleCollection.forEach(System.out::println);
 
     }
 
