@@ -22,7 +22,12 @@ public class App
 
         System.out.println("------------------------------------");
         // Create person
-        Person createdPerson = peopleImpl.create(new Person("VeryImportantDude", "Lastname"));
+        Person createdPerson = peopleImpl.create(new Person("Jocko", "Nilsson"));
+        Person createdPerson2 = peopleImpl.create(new Person("Hanna", "Olsson"));
+        Person createdPerson3 = peopleImpl.create(new Person("Hanna", "Bahanna"));
+        Person createdPerson4 = peopleImpl.create(new Person("Kris", "Mavios"));
+        Person createdPerson5 = peopleImpl.create(new Person("Amanda", "Stensson"));
+        Person createdPerson6 = peopleImpl.create(new Person("Amanda", "Stensson"));
 
         System.out.println("------------------------------------");
         //Find all people
@@ -57,7 +62,11 @@ public class App
         //title, `description`, deadline, done, assignee_id
         LocalDate date = LocalDate.parse("2021-04-02");
         //3 (assignee_id) references to the Person
-        Todo createTodo = todoImpl.create(new Todo("Bitcoin", "DoNotBuyNow", date, 0, 3));
+        Todo createTodo = todoImpl.create(new Todo("Bitcoin", "Sell", date, 0, 3));
+        Todo createTodo2 = todoImpl.create(new Todo("Book", "Read", date, 1, 2));
+        Todo createTodo3 = todoImpl.create(new Todo("Gamestop", "Hold", date, 0, 3));
+        Todo createTodo4 = todoImpl.create(new Todo("Ethereum", "Buy", date, 0, 4));
+
 
         System.out.println("------------------------------------");
         //Find allTodo
@@ -88,7 +97,7 @@ public class App
         System.out.println("----------- deleteById ------------");
         //deleteById
         boolean todoTaskDelStatus = todoImpl.deleteById(createTodo.getTodo_id());
-        //Test for the invalid boolean if you want
+        //Test invalid values
         //boolean todoTaskDelStatus = todoImpl.deleteById(10000);
         //boolean todoTaskDelStatus = todoImpl.deleteById(10);
         System.out.println(todoTaskDelStatus);
